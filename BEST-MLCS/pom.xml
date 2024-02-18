@@ -7,13 +7,13 @@
     <version>28.2</version>
   </parent>
   <groupId>mlcs</groupId>
-  <artifactId>mini-mlcs</artifactId>
+  <artifactId>best-mlcs</artifactId>
   <packaging>jar</packaging>
   <version>0.0.1</version>
-  <name>Mini-MLCS Project</name>
+  <name>Best-MLCS Project</name>
 
   <description>
-    The Mini-MLCS Problem Solutions.
+    The Best-MLCS Problem Solutions.
   </description>
 
   <properties>
