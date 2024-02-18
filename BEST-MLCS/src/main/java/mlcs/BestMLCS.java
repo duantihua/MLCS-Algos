@@ -13,7 +13,7 @@ public class BestMLCS {
 
   public static void main(String[] args) throws IOException {
     if (args.length == 0) {
-      System.out.println("Usage:BestMLCS /path/to/your/data/file [minReserved=500]");
+      System.out.println("Usage:BestMLCS /path/to/your/data/file [minReserved=5]");
       return;
     }
     Map<String, String> arguments = new HashMap<>();
