@@ -117,12 +117,17 @@ public class Graph {
     layers[toLevel].put(loc, loc);
   }
 
-  public  void cleanup(){
-    for(int i=0;i<maxLevel;i++){
-      var layer= layers[i];
-      var removed= new HashSet<Node>();
-      for(Node n:layer.keySet()){
-
+  public void cleanup() {
+    for (int i = maxLevel - 1; i > 0; i--) {
+      var layer = layers[i];
+      var removed = new HashSet<Node>();
+      for (Node n : layer.keySet()) {
+        if (!cleanupNode(n)) {
+          removed.add(n);
+        }
+      }
+      for (Node n : removed) {
+        layer.remove(n);
       }
     }
   }
@@ -140,7 +145,7 @@ public class Graph {
         var su = nodes.get(succor);
         if (null != su && null != su.precs) {
           if (su.precs.contains(loc)) {
-           su.precs.remove(loc);
+            su.precs.remove(loc);
             break;
           }
         }
@@ -293,7 +298,7 @@ public class Graph {
     matchedCount = routeCounts.get(startLocation);
 
     return new Result(this, matchedCount, keyLocs.size(), maxLevel, totalCreateCount, highestCapacity,
-        startAt, System.currentTimeMillis());
+      startAt, System.currentTimeMillis());
   }
 
   /**

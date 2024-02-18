@@ -34,8 +34,8 @@ public class BestMLCS {
     var bestMlcs = new BestMLCS(mlcs, lb);
     String resultFile = getOutFile(sourceFile, "ep_" + getFileShortName(sourceFile) + ".txt");
     var graph = bestMlcs.search();
+    graph.cleanup();
     statResult(graph, resultFile, startAt);
-
   }
 
   private static void statResult(Graph graph, String resultFile, long startAt) {
@@ -61,6 +61,7 @@ public class BestMLCS {
     while (!graph.layers[k].isEmpty()) {//Lk
       //new set for avoid ConcurrentModification,due to shifting from k to k+1
       var layerK = new HashSet<>(graph.layers[k].keySet());
+      System.out.println("layer " + k + " size " + layerK.size());
       for (Node p : layerK) {
         if (p.level != k) continue;
         for (Node q : mlcs.nextLocations(p)) {
